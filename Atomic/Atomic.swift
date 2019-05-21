@@ -37,14 +37,14 @@ public final class Atomic<Value> {
     /// Atomically replaces the contents of the variable.
     ///
     /// Returns the old value.
-    public func swap(_ newValue: Value) -> Value {
+    @discardableResult public func swap(_ newValue: Value) -> Value {
         return modify { _ in newValue }
     }
 
     /// Atomically modifies the variable.
     ///
     /// Returns the old value.
-    public func modify(action: (Value) throws -> Value) rethrows -> Value {
+    @discardableResult public func modify(action: (Value) throws -> Value) rethrows -> Value {
         return try lock.withCriticalScope {
             let oldValue = _value
             _value = try action(_value)
