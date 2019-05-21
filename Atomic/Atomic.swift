@@ -44,7 +44,7 @@ public final class Atomic<Value> {
     /// Atomically modifies the variable.
     ///
     /// Returns the old value.
-    public func modify(@noescape action: (Value) throws -> Value) rethrows -> Value {
+    public func modify(action: (Value) throws -> Value) rethrows -> Value {
         return try lock.withCriticalScope {
             let oldValue = _value
             _value = try action(_value)
@@ -56,7 +56,7 @@ public final class Atomic<Value> {
     /// variable.
     ///
     /// Returns the result of the action.
-    public func withValue<Result>(@noescape action: (Value) throws -> Result) rethrows -> Result {
+    public func withValue<Result>(action: (Value) throws -> Result) rethrows -> Result {
         return try lock.withCriticalScope {
             try action(_value)
         }

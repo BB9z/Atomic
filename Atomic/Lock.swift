@@ -39,7 +39,7 @@ final public class Lock {
 }
 
 extension Lock {
-    public func withCriticalScope<Result>(@noescape body: () throws -> Result) rethrows -> Result {
+    public func withCriticalScope<Result>(body: () throws -> Result) rethrows -> Result {
         lock()
         defer { unlock() }
         return try body()
