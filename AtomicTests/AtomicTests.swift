@@ -38,7 +38,7 @@ class AtomicTests: XCTestCase {
 
     func testSwap() {
         let atomic = Atomic(1)
-        let oldValue = atomic.swap(newValue: 25)
+        let oldValue = atomic.swap(25)
         XCTAssertEqual(oldValue, 1)
         XCTAssertEqual(atomic._value, 25)
     }

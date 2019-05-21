@@ -37,7 +37,7 @@ public final class Atomic<Value> {
     /// Atomically replaces the contents of the variable.
     ///
     /// Returns the old value.
-    public func swap(newValue: Value) -> Value {
+    public func swap(_ newValue: Value) -> Value {
         return modify { _ in newValue }
     }
 
